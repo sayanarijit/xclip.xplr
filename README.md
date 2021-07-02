@@ -1,13 +1,12 @@
-xplr plugin template
-====================
+[![copy.gif](https://s3.gifyu.com/images/copy.gif)](https://gifyu.com/image/tBwL)
 
-Use this template to [write your own xplr plugin](https://arijitbasu.in/xplr/en/writing-plugins.html).
-
+Copy and paste with system clipboard using
+[xclip](https://github.com/astrand/xclip).
 
 Requirements
 ------------
 
-- Some tool
+- [xclip](https://github.com/astrand/xclip)
 
 
 Installation
@@ -26,26 +25,21 @@ Installation
   ```bash
   mkdir -p ~/.config/xplr/plugins
 
-  git clone https://github.com/me/{plugin}.xplr ~/.config/xplr/plugins/{plugin}
+  git clone https://github.com/sayanarijit/xclip.xplr ~/.config/xplr/plugins/xclip
   ```
 
 - Require the module in `~/.config/xplr/init.lua`
 
   ```lua
-  require("{plugin}").setup()
+  require("xclip").setup()
   
   -- Or
   
-  require("{plugin}").setup{
-    mode = "action",
-    key = ":",
+  require("xclip").setup{
+    copy_command = "xclip-copyfile",
+    paste_command = "xclip-pastefile",
+    keep_selection = false,
   }
 
-  -- Type `::` and enjoy.
+  -- Type `yy` and copy and `p` to paste.
   ```
-
-
-Features
---------
-
-- Some cool feature
