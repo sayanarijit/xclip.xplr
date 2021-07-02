@@ -51,7 +51,7 @@ local function setup(args)
   end
 
   xplr.config.modes.custom.xclip_copy = {
-    name = "copy to clipboard",
+    name = "xclip copy",
     key_bindings = {
       on_key = {
         y = {
@@ -60,6 +60,14 @@ local function setup(args)
             { CallLuaSilently = "custom.xclip_copy" },
             "PopMode",
           },
+        },
+        esc = {
+          help = "cancel",
+          messages = { "PopMode" },
+        },
+        ["ctrl-c"] = {
+          help = "terminate",
+          messages = { "Terminate" },
         }
       }
     }

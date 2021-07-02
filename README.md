@@ -41,5 +41,5 @@ Installation
     keep_selection = false,
   }
 
-  -- Type `yy` and copy and `p` to paste.
+  -- Type `yy` to copy and `p` to paste.
   ```
