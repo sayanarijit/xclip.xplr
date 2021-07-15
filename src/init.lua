@@ -1,21 +1,11 @@
 local function setup(args)
   local xplr = xplr
 
-  if args == nil then
-    args = {}
-  end
-
-  if args.copy_command == nil then
-    args.copy_command = "xclip-copyfile"
-  end
-
-  if args.paste_command == nil then
-    args.paste_command = "xclip-pastefile"
-  end
-
-  if args.keep_selection == nil then
-    args.keep_selection = false
-  end
+  args = args or {}
+  args.copy_command = args.copy_command or "xclip-copyfile"
+  args.copy_paths_command = args.copy_paths_command or "xclip -sel clip"
+  args.paste_command = args.paste_command or "xclip-pastefile"
+  args.keep_selection = args.keep_selection or false
 
 
   xplr.fn.custom.xclip_copy = function(app)
@@ -55,9 +45,25 @@ local function setup(args)
     key_bindings = {
       on_key = {
         y = {
-          help = "copy",
+          help = "copy files",
           messages = {
             { CallLuaSilently = "custom.xclip_copy" },
+            "PopMode",
+          },
+        },
+        p = {
+          help = "copy paths",
+          messages = {
+            { BashExecSilently = args.copy_paths_command .. " < ${XPLR_PIPE_RESULT_OUT:?}" },
+            "ClearSelection",
+            "PopMode",
+          },
+        },
+        P = {
+          help = "copy parent directory",
+          messages = {
+            { BashExecSilently = args.copy_paths_command .. " <<< ${PWD:?}" },
+            "ClearSelection",
             "PopMode",
           },
         },

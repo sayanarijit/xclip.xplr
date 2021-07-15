@@ -37,9 +37,12 @@ Installation
   
   require("xclip").setup{
     copy_command = "xclip-copyfile",
+    copy_paths_command = "xclip -sel clip",
     paste_command = "xclip-pastefile",
     keep_selection = false,
   }
 
-  -- Type `yy` to copy and `p` to paste.
+  -- Type `yy` to copy and `p` to paste whole files.
+  -- Type `yp` to copy the paths of focused or selected files.
+  -- Type `yP` to copy the parent directory path.
   ```
