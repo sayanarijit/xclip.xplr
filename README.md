@@ -3,21 +3,23 @@
 Copy and paste with system clipboard using
 [xclip](https://github.com/astrand/xclip).
 
-Requirements
-------------
+## Requirements
 
 - [xclip](https://github.com/astrand/xclip)
 
-
-Installation
-------------
+## Installation
 
 ### Install manually
 
 - Add the following line in `~/.config/xplr/init.lua`
 
   ```lua
-  package.path = os.getenv("HOME") .. '/.config/xplr/plugins/?/src/init.lua'
+  local home = os.getenv("HOME")
+  package.path = home
+  .. "/.config/xplr/plugins/?/init.lua;"
+  .. home
+  .. "/.config/xplr/plugins/?.lua;"
+  .. package.path
   ```
 
 - Clone the plugin
@@ -32,9 +34,9 @@ Installation
 
   ```lua
   require("xclip").setup()
-  
+
   -- Or
-  
+
   require("xclip").setup{
     copy_command = "xclip-copyfile",
     copy_paths_command = "xclip -sel clip",
